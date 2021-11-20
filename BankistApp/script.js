@@ -105,3 +105,21 @@ const creatAcc = function (accounn) {
 
 creatAcc(accounts);
 console.log(accounts);
+
+const deposit = movements.filter(function (value) {
+  return value > 0;
+});
+
+const minus = movements.filter(function (val) {
+  return val < 0;
+});
+
+console.log(deposit);
+console.log(minus);
+
+const depositFor = [];
+for (const mov of movements) if (mov > 0) depositFor.push(mov);
+console.log(depositFor);
+
+const withdrawals = movements.filter(part => part < 0);
+console.log(withdrawals);
