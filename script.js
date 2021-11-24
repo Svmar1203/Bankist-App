@@ -85,14 +85,30 @@ const calcDisplayBalance = function (movements) {
 };
 calcDisplayBalance(account1.movements);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const calcDisplaySummary = function (movements) {
+  const incomes = movements
+    .filter(mov => mov > 0)
+    .reduce((accum, current) => accum + current, 0);
+  labelSumIn.textContent = `${incomes}EUR`;
 
+  const out = movements
+    .filter(mov => mov < 0)
+    .reduce((accum, current) => accum + current, 0);
+  labelSumOut.textContent = `${Math.abs(out)}EUR`; // without minus
+};
+
+calcDisplaySummary(account1.movements);
+
+//const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+/*
 const max = movements.reduce((acc, mov) => {
   if (acc > mov) return acc;
   else return mov;
 }, movements[0]);
 
 console.log(`Max value is ${max}`);
+*/
 
 //////////////////////////////////////////////
 /////////////--MY SOLUTION--//////////////////
@@ -130,7 +146,7 @@ calcDog(testData2);
 */
 ///////////////////////////////////////////
 /////////////--JONAS SOLUTION--////////////
-
+/*
 const testData = [5, 2, 4, 1, 15, 8, 3];
 const testData2 = [16, 6, 10, 5, 6, 1, 4];
 
@@ -150,6 +166,8 @@ console.log(avg1);
 console.log(`-------------------------`);
 const avg2 = calcAverageHumanAge(testData2);
 console.log(avg2);
+*/
+/////////////////////////////////
 
 /*
 const test = testData.filter(function (val) {
@@ -270,3 +288,34 @@ console.log(sum);
 
 //const ballans = movements.reduce((acc1, curr1) => acc1 + curr1, 0);
 */
+
+/////PIPELINE
+/*
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+
+const eurToUsd = 1.1;
+const totalDepositsToUsd = movements
+  .filter(mov => mov > 0)
+  .map(mov => mov * eurToUsd)
+  .reduce((accum, current) => accum + current, 0);
+console.log(totalDepositsToUsd);
+*/
+///////////////////////////////////////
+/*
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+console.log(movements);
+
+const eurToUsd = 1.1;
+const totalDepositsToUsd = movements
+  .filter(mov => mov > 0)
+  .map((value, index, array) => {
+    console.log(array);
+    return value * eurToUsd;
+  })
+  //.map(mov => mov * eurToUsd)
+  .reduce((accum, current) => accum + current, 0);
+console.log(totalDepositsToUsd);
+*/
+
+////////////////////////////////////////////
