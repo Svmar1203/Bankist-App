@@ -333,13 +333,26 @@ console.log(totalDepositsToUsd);
 const testData = [5, 2, 4, 1, 15, 8, 3];
 const testData2 = [16, 6, 10, 5, 6, 1, 4];
 
-const calcAverageHumanAge = function (ages) {
-  const humanAge = ages
+const calcAverageHumanAge = ages =>
+  ages
     .map(age => (age <= 2 ? age * 2 : 16 + age * 4))
     .filter(age => age >= 18)
     .reduce((accu, cur, i, arr) => accu + cur / arr.length, 0); // average
-  console.log(humanAge);
-};
 
-calcAverageHumanAge(testData);
-calcAverageHumanAge(testData2);
+const avg1 = calcAverageHumanAge(testData);
+const avg2 = calcAverageHumanAge(testData2);
+console.log(avg1);
+console.log(avg2);
+
+/////////--FIND METHOD--/////////////
+//loop the array and return the first element, that satisfies the condition
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const withdrawal = movements.find(mov => mov < 0);
+console.log(movements);
+console.log(withdrawal);
+
+console.log(accounts);
+
+const account = accounts.find(accoun => accoun.owner === 'Jessica Davis');
+console.log(account);
