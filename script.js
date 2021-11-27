@@ -229,8 +229,6 @@ console.log(anyDeposits);
 
 // EVERY
 
-console.log(account4.movements.every(mov => mov > 0));
-
 //const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /*
