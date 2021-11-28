@@ -239,7 +239,42 @@ console.log(overalBalance2);
 
 ///////////////////////////
 
-//
+//Sorting Array
+//Strings
+
+const owners = ['Jonas', 'Zack', 'Adam', 'Martha'];
+console.log(owners.sort());
+console.log(owners);
+
+//Numbers
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+console.log(movements);
+console.log(movements.sort());
+console.log(movements);
+
+//return < 0 A, B descending order
+//return > 0, B, A ascending order
+//ascending order:
+/*
+movements.sort((a, b) => {
+  if (a > b) return 1;
+  if (a < b) return -1;
+});
+console.log(movements);
+*/
+movements.sort((a, b) => a - b);
+console.log(movements);
+
+//descending order:
+/*
+movements.sort((a, b) => {
+  if (a > b) return -1; //return -1
+  if (a < b) return 1; // return 1
+});
+console.log(movements);
+*/
+movements.sort((a, b) => b - a);
+console.log(movements);
 
 /////////////////////////////////////////
 /*
