@@ -215,6 +215,34 @@ btnClose.addEventListener('click', function (e) {
   inputCloseUsername.value = inputClosePin.value = '';
 });
 
+/*
+const accountMovements = accounts.map(acc => acc.movements);
+console.log(accountMovements);
+const allMovements = accountMovements.flat();
+console.log(allMovements);
+//console.log(accountMovements.flat());
+//const overalBallance = allMovements.reduce((accum, val) => accum + val, 0);
+console.log(overalBallance);
+*/
+//map + flat + reduce
+const overalBallance = accounts
+  .map(acc => acc.movements)
+  .flat()
+  .reduce((accum, val) => accum + val, 0);
+console.log(overalBallance);
+
+// flatMap
+const overalBalance2 = accounts
+  .flatMap(acc => acc.movements)
+  .reduce((accum, val) => accum + val, 0);
+console.log(overalBalance2);
+
+///////////////////////////
+
+//
+
+/////////////////////////////////////////
+/*
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 console.log(movements);
 //EQUALITY
@@ -230,6 +258,28 @@ console.log(anyDeposits);
 // EVERY
 
 console.log(account4.movements.every(mov => mov > 0));
+
+const deposit = mov => mov > 0;
+const withdrawal1 = mov => mov < 0;
+
+console.log(movements.some(deposit));
+console.log(account4.movements.every(deposit));
+console.log(movements.filter(deposit));
+console.log(account2.movements.filter(deposit));
+console.log(account2.movements.filter(withdrawal1));
+console.log(account2.movements);
+
+const arr = [[1, 2, 3], [3, 5, 4], 8, 8];
+console.log(arr.flat());
+
+const arrDeep = [
+  [[1, 2], 3],
+  [2, 8],
+  [[9, 9], 7],
+];
+console.log(arrDeep.flat(2));//flat(=>2) means, deep level
+*/
+////////////////////////////////
 
 //const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
