@@ -61,9 +61,10 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-const displayMovements = function (movements) {
+const displayMovements = function (movements, sort = false) {
   containerMovements.innerHTML = '';
-  movements.forEach(function (mov, index) {
+  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements; // slice() => take copy of array, not mutate origin one
+  movs.forEach(function (mov, index) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
 
     const html = `<div class="movements__row">
@@ -215,6 +216,45 @@ btnClose.addEventListener('click', function (e) {
   inputCloseUsername.value = inputClosePin.value = '';
 });
 
+let sorted = false;
+
+btnSort.addEventListener('click', function (e) {
+  e.preventDefault();
+  displayMovements(currentAccount.movements, !sorted);
+  sorted = !sorted;
+});
+
+const arr = [1, 2, 3, 4, 5, 6, 7];
+console.log(new Array(1, 2, 5, 5, 5));
+
+const x = new Array(5);
+console.log(x);
+
+x.fill(1, 3);
+console.log(x);
+
+arr.fill(23, 4, 6);
+console.log(arr);
+
+//Array.from()
+
+const y = Array.from({ length: 7 }, () => 1);
+console.log(y);
+
+const z = Array.from({ length: 7 }, (curr, i) => i + 2);
+console.log(z);
+
+//const movementsUI = Array.from(document.querySelectorAll('.movements__value'));
+//console.log(movementsUI);
+
+labelBalance.addEventListener('click', function () {
+  const movementsUI = Array.from(
+    document.querySelectorAll('.movements__value'),
+    el => Number(el.textContent.replace('', ' '))
+  );
+  console.log(movementsUI);
+});
+
 /*
 const accountMovements = accounts.map(acc => acc.movements);
 console.log(accountMovements);
@@ -224,6 +264,8 @@ console.log(allMovements);
 //const overalBallance = allMovements.reduce((accum, val) => accum + val, 0);
 console.log(overalBallance);
 */
+////////////////////////////////////
+/*
 //map + flat + reduce
 const overalBallance = accounts
   .map(acc => acc.movements)
@@ -236,9 +278,11 @@ const overalBalance2 = accounts
   .flatMap(acc => acc.movements)
   .reduce((accum, val) => accum + val, 0);
 console.log(overalBalance2);
+*/
 
 ///////////////////////////
 
+/*
 //Sorting Array
 //Strings
 
@@ -251,7 +295,7 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 console.log(movements);
 console.log(movements.sort());
 console.log(movements);
-
+*/
 //return < 0 A, B descending order
 //return > 0, B, A ascending order
 //ascending order:
@@ -262,9 +306,10 @@ movements.sort((a, b) => {
 });
 console.log(movements);
 */
+/*
 movements.sort((a, b) => a - b);
 console.log(movements);
-
+*/
 //descending order:
 /*
 movements.sort((a, b) => {
@@ -273,8 +318,9 @@ movements.sort((a, b) => {
 });
 console.log(movements);
 */
-movements.sort((a, b) => b - a);
-console.log(movements);
+
+//movements.sort((a, b) => b - a);
+//console.log(movements);
 
 /////////////////////////////////////////
 /*
