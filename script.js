@@ -224,6 +224,31 @@ btnSort.addEventListener('click', function (e) {
   sorted = !sorted;
 });
 
+/////////////////////////
+/*
+const bankDepositSum = accounts.map(acc => acc.movements).flat(); // all element from other arrays in one
+console.log(bankDepositSum); // all values
+
+const posit = accounts.flatMap(acc => acc.movements).filter(val => val > 0);
+console.log(posit); // positive values
+
+const min = accounts.flatMap(acc => acc.movements).filter(move => move < 0);
+console.log(min); // negative values
+
+const summa = accounts
+  .flatMap(acc => acc.movements)
+  .filter(val => val > 0)
+  .reduce((curre, el) => curre + el, 0);
+console.log(summa); // summa of all values
+*/
+
+const bankDeposit1000 = accounts
+  .flatMap(acc => acc.movements)
+  .filter(mov => mov > 1000);
+console.log(bankDeposit1000);
+
+/////////////////////////////////////
+/*
 const arr = [1, 2, 3, 4, 5, 6, 7];
 console.log(new Array(1, 2, 5, 5, 5));
 
@@ -246,7 +271,9 @@ console.log(z);
 
 //const movementsUI = Array.from(document.querySelectorAll('.movements__value'));
 //console.log(movementsUI);
-
+*/
+/////////////////////////////////////////////////////////
+/*
 labelBalance.addEventListener('click', function () {
   const movementsUI = Array.from(
     document.querySelectorAll('.movements__value'),
@@ -254,7 +281,8 @@ labelBalance.addEventListener('click', function () {
   );
   console.log(movementsUI);
 });
-
+*/
+///////////////////////////////////////
 /*
 const accountMovements = accounts.map(acc => acc.movements);
 console.log(accountMovements);
