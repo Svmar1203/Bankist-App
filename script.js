@@ -713,3 +713,28 @@ const dogs = [
 
 GOOD LUCK 😀
 */
+
+const dogs = [
+  { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
+  { weight: 8, curFood: 200, owners: ['Matilda'] },
+  { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
+  { weight: 32, curFood: 340, owners: ['Michael'] },
+];
+
+// 1.
+dogs.forEach(dog => (dog.recomFood = Math.trunc(dog.weight ** 0.75 * 28)));
+console.log(dogs);
+
+const dogSarah = dogs.find(dog => dog.owners.includes('Sarah'));
+console.log(dogSarah);
+console.log(
+  `Sarah dog is eating too ${
+    dogSarah.recomFood < dogSarah.curFood ? 'much' : 'little'
+  }`
+);
+const ownersEatTooMuch = dogs
+  .filter(dog => dog.curFood > dog.recomFood) // condition => return new array
+  .flatMap(dog => dog.owners);
+//.map(dog => dog.owners)// return value
+//.flat();// split 2 arrays in one
+console.log(ownersEatTooMuch);
